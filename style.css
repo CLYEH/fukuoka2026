@@ -220,6 +220,43 @@ body {
 .info__grid strong { color: var(--ink); font-weight: 600; letter-spacing: 0.05em; }
 .info__grid .muted { font-size: 0.85rem; opacity: 0.8; }
 
+/* Notice / reminder */
+.notice {
+  background: #fff6e0;
+  border: 1px solid #f0d994;
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+.notice strong {
+  display: block;
+  color: var(--accent);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+.notice p {
+  color: var(--ink);
+  font-size: 0.92rem;
+  margin: 0;
+}
+.notice p + p { margin-top: 0.35rem; }
+.notice__meta {
+  color: var(--muted) !important;
+  font-size: 0.85rem !important;
+}
+.notice a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+.notice a:hover { opacity: 0.8; }
+
+.timeline h3 small {
+  font-size: 0.8em;
+  color: var(--muted);
+  font-weight: 400;
+  margin-left: 0.5em;
+}
+.timeline em { color: var(--accent); font-style: normal; font-size: 0.88em; }
+
 /* Footer */
 .footer {
   text-align: center;
