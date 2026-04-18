@@ -217,6 +217,8 @@ body {
 }
 
 .info__grid p { color: var(--muted); font-size: 0.95rem; }
+.info__grid strong { color: var(--ink); font-weight: 600; letter-spacing: 0.05em; }
+.info__grid .muted { font-size: 0.85rem; opacity: 0.8; }
 
 /* Footer */
 .footer {
