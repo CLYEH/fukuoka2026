@@ -23,20 +23,44 @@ body {
 
 /* Hero */
 .hero {
-  min-height: 70vh;
+  position: relative;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(193, 39, 45, 0.08), transparent 60%),
-    radial-gradient(circle at 80% 80%, rgba(193, 39, 45, 0.06), transparent 50%),
-    var(--bg);
+  overflow: hidden;
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
 }
 
-.hero__inner { max-width: 720px; }
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(247, 243, 236, 0.55) 0%, rgba(247, 243, 236, 0.88) 100%),
+    radial-gradient(circle at 30% 20%, rgba(193, 39, 45, 0.12), transparent 60%);
+  z-index: 1;
+}
+
+.hero__inner {
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
+}
 
 .hero__kanji {
   font-family: var(--serif);
@@ -266,6 +290,35 @@ body {
 .timeline a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
 .timeline a:hover { opacity: 0.75; }
 
+/* Day cover figures */
+.day__cover {
+  position: relative;
+  margin: 0 0 2rem;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -12px rgba(26, 26, 26, 0.25);
+}
+.day__cover img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 32vw, 320px);
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.day__cover:hover img { transform: scale(1.03); }
+.day__cover figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.2rem 1rem;
+  color: #fff;
+  font-family: var(--serif);
+  letter-spacing: 0.2em;
+  font-size: 0.95rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.55));
+}
+
 /* Footer */
 .footer {
   text-align: center;
@@ -277,10 +330,60 @@ body {
   border-top: 1px solid var(--line);
 }
 
+/* ============ Responsive ============ */
+
+/* Tablet / small laptop */
+@media (max-width: 900px) {
+  .container { padding: 3rem 1.25rem; }
+  .hero { min-height: 65vh; padding: 4rem 1.25rem; }
+  .day { margin-bottom: 4rem; }
+}
+
+/* Small tablet / large phone */
+@media (max-width: 700px) {
+  .hero { min-height: 58vh; padding: 3.5rem 1rem; }
+  .hero__kanji { letter-spacing: 0.15em; }
+  .nav { gap: 0.3rem 1rem; padding: 0.85rem 1rem; font-size: 0.85rem; }
+  .container { padding: 2.5rem 1rem; }
+  .day__cover img { height: clamp(160px, 45vw, 260px); }
+  .day__cover figcaption { font-size: 0.85rem; padding: 1.2rem 1rem 0.8rem; }
+}
+
+/* Phone */
 @media (max-width: 600px) {
-  .day__head { gap: 0.5rem; }
-  .day__theme { margin-left: 0; width: 100%; }
-  .timeline li { grid-template-columns: 70px 1fr; gap: 1rem; }
+  .day__head {
+    gap: 0.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .day__theme { margin-left: 0; width: 100%; font-size: 0.9rem; }
   .timeline { padding-left: 1.5rem; }
-  .timeline li::before { left: -1.85rem; }
+  .timeline li {
+    grid-template-columns: 72px 1fr;
+    gap: 0.9rem;
+    padding: 1rem 0;
+  }
+  .timeline li::before { left: -1.85rem; top: 1.45rem; }
+  .timeline time { font-size: 0.88rem; }
+  .timeline h3 { font-size: 1rem; line-height: 1.4; }
+  .timeline h3 small { display: block; margin-left: 0; margin-top: 0.15rem; }
+  .timeline p { font-size: 0.9rem; }
+  .notice { padding: 0.85rem 1rem; margin-bottom: 1.5rem; }
+  .notice strong { font-size: 0.88rem; }
+  .notice p { font-size: 0.88rem; }
+  .info__grid { grid-template-columns: 1fr; gap: 1rem; }
+  .info__grid article { padding: 1.2rem; }
+}
+
+/* Narrow phone */
+@media (max-width: 420px) {
+  .hero { min-height: 52vh; padding: 3rem 1rem; }
+  .hero__title { letter-spacing: 0.2em; }
+  .timeline { padding-left: 1.25rem; }
+  .timeline li { grid-template-columns: 62px 1fr; gap: 0.75rem; }
+  .timeline li::before { left: -1.55rem; width: 6px; height: 6px; }
+  .timeline time { font-size: 0.82rem; }
+  .day__cover img { height: 180px; }
 }
