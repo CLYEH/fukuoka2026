@@ -290,6 +290,95 @@ body {
 .timeline a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
 .timeline a:hover { opacity: 0.75; }
 
+/* Transport */
+.transport {
+  padding: 3rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.transport h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.transport__lead {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.transport__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.transport-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.4rem;
+}
+
+.transport-card--highlight {
+  background: linear-gradient(180deg, #fffaf1 0%, #fffdf8 100%);
+  border-color: #e6d6b7;
+}
+
+.transport-card h3,
+.transport__sources h3 {
+  font-family: var(--serif);
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+}
+
+.transport-card p,
+.transport__sources p {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.transport__list {
+  margin-top: 0.8rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.transport__list li + li { margin-top: 0.45rem; }
+
+.transport__meta {
+  margin-top: 0.7rem;
+  font-size: 0.85rem !important;
+}
+
+.transport__tips {
+  margin-bottom: 1.5rem;
+}
+
+.transport__sources {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.3rem 1.4rem;
+}
+
+.transport__sources a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+
+.transport__sources a:hover { opacity: 0.8; }
+
 /* Day cover figures */
 .day__cover {
   position: relative;
@@ -347,6 +436,7 @@ body {
   .container { padding: 2.5rem 1rem; }
   .day__cover img { height: clamp(160px, 45vw, 260px); }
   .day__cover figcaption { font-size: 0.85rem; padding: 1.2rem 1rem 0.8rem; }
+  .transport__lead { text-align: left; }
 }
 
 /* Phone */
@@ -375,6 +465,13 @@ body {
   .notice p { font-size: 0.88rem; }
   .info__grid { grid-template-columns: 1fr; gap: 1rem; }
   .info__grid article { padding: 1.2rem; }
+  .transport__grid { grid-template-columns: 1fr; }
+  .transport-card,
+  .transport__sources { padding: 1.2rem; }
+  .transport__lead,
+  .transport-card p,
+  .transport__sources p,
+  .transport__list { font-size: 0.9rem; }
 }
 
 /* Narrow phone */
